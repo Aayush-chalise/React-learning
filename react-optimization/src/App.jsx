@@ -5,9 +5,7 @@ import Button from "../components/Button";
 const App = () => {
   const [count, setCount] = React.useState(0);
   console.log("parent rendered");
-  //  const sum =  useCallback((a,b)=>{console.log(a+b);
-  //   }, []);
-  // sum()
+
   const handleClick = useCallback(() => {
     setCount((count) => count + 1);
   }, []);
