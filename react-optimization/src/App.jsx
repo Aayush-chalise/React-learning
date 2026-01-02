@@ -1,14 +1,20 @@
 import React from "react";
-
+import { useCallback } from "react";
 import Button from "../components/Button";
 
 const App = () => {
   const [count, setCount] = React.useState(0);
   console.log("parent rendered");
+  //  const sum =  useCallback((a,b)=>{console.log(a+b);
+  //   }, []);
+  // sum()
+  const handleClick = useCallback(() => {
+    setCount((count) => count + 1);
+  }, []);
   return (
     <div>
-      <button onClick={() => setCount(count + 1)}>click me</button>
-      <Button name="aayush" />
+      <button onClick={handleClick}>click me</button>
+      <Button handleBtnClick={handleClick} />
       <div>count is {count}</div>
     </div>
   );
