@@ -1,0 +1,7 @@
+Reconciliation is how React updates the UI when your state or props change.
+
+React doesn’t re-render the entire DOM.
+
+Instead, it creates a virtual DOM, compares it with the previous version (diffing), and updates only the parts that changed.
+
+This is called reconciliation.
