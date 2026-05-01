@@ -39,12 +39,13 @@ const Home = () => {
         <div className="grid grid-cols-5 gap-4">
           {movieData.map((movie) => {
             return (
-              <div className="w-80 h-[600px] bg-gray-200 border gap-2 p-2">
+              <div className="w-80 h-[600px] bg-[#83c5be] border gap-2 p-2">
                 <h1 className="text-center font-semibold text-xl">
                   Title:{movie.title}
                 </h1>
                 <img
                   src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+                  className="object-cover"
                 ></img>
                 <p className="mt-3">Description:{movie.overview}</p>
                 <p className="mt-2">isAdult:{movie.adult}</p>
