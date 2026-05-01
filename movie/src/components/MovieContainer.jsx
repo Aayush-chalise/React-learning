@@ -1,8 +1,10 @@
 // components/MovieList.jsx
-import React from "react";
+import React, { useContext } from "react";
 import MovieCard from "./MovieCard";
+import { MovieContext } from "../context/MovieContext";
 
 const MovieContainer = ({ movies, title = "Popular Movies" }) => {
+  const { filteredMovies } = useContext(MovieContext);
   if (!movies || movies.length === 0) {
     return (
       <div className="py-8">
@@ -21,7 +23,7 @@ const MovieContainer = ({ movies, title = "Popular Movies" }) => {
       </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
-        {movies.map((movie) => (
+        {filteredMovies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
       </div>

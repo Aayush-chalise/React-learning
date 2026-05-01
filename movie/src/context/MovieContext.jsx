@@ -5,6 +5,16 @@ export const MovieContext = createContext();
 
 export const MovieProvider = ({ children }) => {
   const [moviesData, setMoviesData] = useState([]);
+  const [query, setQuery] = useState("");
+
+  const filteredMovies = moviesData
+    .filter((m) => m.title.toLowerCase().includes(query.toLowerCase()))
+    .sort((a, b) => {
+      const q = query.toLowerCase();
+      const aStarts = a.title.toLowerCase().startsWith(q);
+      const bStarts = b.title.toLowerCase().startsWith(q);
+      return aStarts === bStarts ? 0 : aStarts ? -1 : 1;
+    });
 
   useEffect(() => {
     async function getData() {
@@ -32,8 +42,10 @@ export const MovieProvider = ({ children }) => {
 
   const value = {
     moviesData,
-
     setMoviesData,
+    query,
+    setQuery,
+    filteredMovies,
   };
 
   return (
